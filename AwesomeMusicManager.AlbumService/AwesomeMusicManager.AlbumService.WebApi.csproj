@@ -4,5 +4,27 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Compile Remove="AwesomeMusicManager.AlbumService.Model\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="AwesomeMusicManager.AlbumService.Model\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="AwesomeMusicManager.AlbumService.Model\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="AwesomeMusicManager.AlbumService.Model\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="AwesomeMusicManager.AlbumService.Model\obj\AwesomeMusicManager.AlbumService.Model.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="AwesomeMusicManager.AlbumService.Model\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="AwesomeMusicManager.AlbumService.Model\obj\project.packagespec.json" />
+    </ItemGroup>
+
 
 </Project>
