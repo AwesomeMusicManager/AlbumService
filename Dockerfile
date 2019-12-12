@@ -17,4 +17,4 @@ RUN dotnet publish "AwesomeMusicManager.AlbumService.WebApi.csproj" -c Release -
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "AwesomeMusicManager.AlbumService.WebApi.dll"]
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet AwesomeMusicManager.AlbumService.WebApi.dll

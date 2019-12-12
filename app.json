@@ -1,0 +1,22 @@
+{
+    "name": "song-downloader",
+    "description": "API para serviços relacionados a operacoes de album de musica",
+    "scripts": {
+    },
+    "env": {
+      "PORT": "5000"
+    },
+    "formation": {
+      "web": {
+        "quantity": 1
+      }
+    },
+    "addons": [
+  
+    ],
+    "buildpacks": [
+      {
+        "url": "https://github.com/jincod/dotnetcore-buildpack"
+      }
+    ]
+  }
