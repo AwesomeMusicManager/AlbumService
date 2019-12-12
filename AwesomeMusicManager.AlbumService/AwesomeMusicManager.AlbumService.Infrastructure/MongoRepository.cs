@@ -1,10 +1,12 @@
 ﻿using AwesomeMusicManager.AlbumService.Model;
+using AwesomeMusicManager.AlbumService.Model.Interfaces;
 using MongoDB.Driver;
 using System;
+using System.Collections.Generic;
 
 namespace AwesomeMusicManager.AlbumService.Infrastructure
 {
-    public class MongoRepository
+    public class MongoRepository : IMongoRepository
     {
         public static string ConnectionString { get; set; }
         public static string DatabaseName { get; set; }
@@ -36,6 +38,36 @@ namespace AwesomeMusicManager.AlbumService.Infrastructure
             {
                 return _database.GetCollection<Album>("Albuns");
             }
+        }
+
+        public List<Album> GetAll()
+        {
+            List<Album> albums = Albums.Find(m => true).ToList();
+            return albums;
+        }
+
+        public Album GetById(Guid id)
+        {
+            var album = Albums.Find(m => m.Id == id.ToString()).FirstOrDefault();
+            return album;
+        }
+
+        public Album Update(Album album)
+        {
+            Albums.ReplaceOne(m => m.Id == album.Id, album);
+            return album;
+        }
+
+        public Album Add(Album album)
+        {
+            album.Id = Guid.NewGuid().ToString();
+            Albums.InsertOne(album);
+            return album;
+        }
+
+        public void Delete(Guid id)
+        {
+            Albums.DeleteOne(m => m.Id == id.ToString());
         }
     }
 }

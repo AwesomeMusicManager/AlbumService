@@ -1,5 +1,7 @@
 using System;
 using AwesomeMusicManager.AlbumService.Infrastructure;
+using AwesomeMusicManager.AlbumService.Model.Interfaces;
+using AwesomeMusicManager.AlbumService.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -24,7 +26,10 @@ namespace AwesomeMusicManager.AlbumService.WebApi
             MongoRepository.ConnectionString = Configuration.GetSection("MongoConnection:ConnectionString").Value;
             MongoRepository.DatabaseName = Configuration.GetSection("MongoConnection:Database").Value;
             MongoRepository.IsSSL = Convert.ToBoolean(this.Configuration.GetSection("MongoConnection:IsSSL").Value);
-            
+
+            services.AddScoped<IAlbumService, Service.AlbumService>();
+            services.AddScoped<IMongoRepository, MongoRepository>();
+
             services.AddControllers();
 
             services.AddSwaggerGen(c =>

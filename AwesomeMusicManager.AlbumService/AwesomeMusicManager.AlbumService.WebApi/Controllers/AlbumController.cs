@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using AwesomeMusicManager.AlbumService.Model;
+using AwesomeMusicManager.AlbumService.Model.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AwesomeMusicManager.AlbumService.WebApi.Controllers
@@ -9,11 +10,11 @@ namespace AwesomeMusicManager.AlbumService.WebApi.Controllers
     [ApiController]
     public class AlbumController : ControllerBase
     {
-        private readonly Service.AlbumService _albumService;
+        private readonly IAlbumService _albumService;
 
-        public AlbumController()
+        public AlbumController(IAlbumService service)
         {
-            _albumService = new Service.AlbumService();
+            _albumService = service;
         }
 
         [HttpGet]
