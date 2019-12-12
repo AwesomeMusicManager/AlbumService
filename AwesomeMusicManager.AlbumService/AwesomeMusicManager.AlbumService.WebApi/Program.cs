@@ -14,15 +14,14 @@ namespace AwesomeMusicManager.AlbumService.WebApi
     {
         public static void Main(string[] args)
         {
-            var config = new ConfigurationBuilder()
-                        .AddCommandLine(args)
-                        .AddJsonFile("appsettings.json")
-                        .Build();
-
+//            var config = new ConfigurationBuilder()
+//                        .AddCommandLine(args)
+//                        .AddJsonFile("appsettings.json")
+//                        .AddEnvironmentVariables()
+//                        .Build();
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseConfiguration(config)
                 .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
