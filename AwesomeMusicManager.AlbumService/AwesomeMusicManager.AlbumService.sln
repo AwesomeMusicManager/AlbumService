@@ -1,10 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeMusicManager.AlbumService.WebApi", "AwesomeMusicManager.AlbumService.WebApi.csproj", "{9385B66B-99F2-480A-BF8B-1968825CD8B2}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AwesomeMusicManager.AlbumService.WebApi", ".\AwesomeMusicManager.AlbumService.WebApi\AwesomeMusicManager.AlbumService.WebApi.csproj", "{9385B66B-99F2-480A-BF8B-1968825CD8B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeMusicManager.AlbumService.Model", "AwesomeMusicManager.AlbumService.Model\AwesomeMusicManager.AlbumService.Model.csproj", "{6849225E-5EEB-4C7D-8264-236FBC0A706C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AwesomeMusicManager.AlbumService.Model", ".\AwesomeMusicManager.AlbumService.Model\AwesomeMusicManager.AlbumService.Model.csproj", "{6849225E-5EEB-4C7D-8264-236FBC0A706C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeMusicManager.AlbumService.Service", "..\AwesomeMusicManager.AlbumService.Service\AwesomeMusicManager.AlbumService.Service\AwesomeMusicManager.AlbumService.Service.csproj", "{298CE891-25A8-408D-81DA-BB65DCD3786A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AwesomeMusicManager.AlbumService.Service", ".\AwesomeMusicManager.AlbumService.Service\AwesomeMusicManager.AlbumService.Service\AwesomeMusicManager.AlbumService.Service.csproj", "{298CE891-25A8-408D-81DA-BB65DCD3786A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeMusicManager.AlbumService.Infrastructure", ".\AwesomeMusicManager.AlbumService.Infrastructure\AwesomeMusicManager.AlbumService.Infrastructure.csproj", "{1C31DC43-0903-47D4-9F81-2ADDB67C4293}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +29,15 @@ Global
 		{298CE891-25A8-408D-81DA-BB65DCD3786A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{298CE891-25A8-408D-81DA-BB65DCD3786A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{298CE891-25A8-408D-81DA-BB65DCD3786A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C31DC43-0903-47D4-9F81-2ADDB67C4293}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C31DC43-0903-47D4-9F81-2ADDB67C4293}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C31DC43-0903-47D4-9F81-2ADDB67C4293}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C31DC43-0903-47D4-9F81-2ADDB67C4293}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {20859148-F11B-4274-83F6-86D5973C8FBA}
 	EndGlobalSection
 EndGlobal

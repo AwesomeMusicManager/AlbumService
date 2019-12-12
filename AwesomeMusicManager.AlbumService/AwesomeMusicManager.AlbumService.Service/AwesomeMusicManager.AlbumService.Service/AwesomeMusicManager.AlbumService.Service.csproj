@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="Class1.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MongoDB.Driver" Version="2.10.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\AwesomeMusicManager.AlbumService.Infrastructure\AwesomeMusicManager.AlbumService.Infrastructure.csproj" />
+      <ProjectReference Include="..\..\AwesomeMusicManager.AlbumService.Model\AwesomeMusicManager.AlbumService.Model.csproj" />
+    </ItemGroup>
+
+</Project>

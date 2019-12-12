@@ -1,0 +1,50 @@
+# version: 2.1
+
+# orbs:
+#   win: circleci/windows@1.0.0
+
+# jobs:
+#   build:
+#     executor:
+#       name: win/vs2019
+#       shell: powershell.exe
+#     steps:
+#       - checkout
+#       - restore_cache:
+#           keys:
+#             - dotnet-packages-v1-{{ checksum "AwesomeMusicManager.AlbumService/AwesomeMusicManager.AlbumService.WebApi/AwesomeMusicManager.AlbumService.WebApi.csproj" }}
+#       - run:
+#           name: "Install project dependencies"
+#           command: dotnet.exe restore AwesomeMusicManager.AlbumService/AwesomeMusicManager.AlbumService.WebApi/AwesomeMusicManager.AlbumService.WebApi.csproj
+#       - save_cache:
+#           paths:
+#             - C:\Users\circleci\.nuget\packages
+#           key: dotnet-packages-v1-{{ checksum "AwesomeMusicManager.AlbumService/AwesomeMusicManager.AlbumService.WebApi/AwesomeMusicManager.AlbumService.WebApi.csproj" }}
+#       - run:
+#           name: "Run Build step"
+#           command: dotnet.exe publish "AwesomeMusicManager.AlbumService.WebApi.csproj" -c Release -r win10-x64
+#       - run:
+#           name: "Run Application Tests"
+#           command: dotnet.exe test -v n --results-directory:test_coverage --collect:"Code Coverage"
+#       - store_artifacts:
+#           path: .\bin\Release\netcoreapp2.1\win10-x64\publish\circleci-demo-windows.exe
+
+          version: 2
+          jobs:
+            build:
+              docker:
+                - image: mcr.microsoft.com/dotnet/core/sdk:3.1
+              steps:
+                - checkout
+                - run:
+                    name: Restore
+                    command: dotnet restore
+                    working_directory: AwesomeMusicManager.AlbumService/AwesomeMusicManager.AlbumService.WebApi
+                - run:
+                    name: Build
+                    command: dotnet build -c Release
+                    working_directory: AwesomeMusicManager.AlbumService/AwesomeMusicManager.AlbumService.WebApi
+                - run:
+                    name: Running Tests
+                    command: dotnet test
+                    working_directory: AwesomeMusicManager.AlbumService/AwesomeMusicManager.AlbumService.Tests
