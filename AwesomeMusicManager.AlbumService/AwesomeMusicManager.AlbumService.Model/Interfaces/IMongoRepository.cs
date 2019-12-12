@@ -6,14 +6,14 @@ namespace AwesomeMusicManager.AlbumService.Model.Interfaces
 {
     public interface IMongoRepository
     {
-        public List<Album> GetAll();
+        List<Album> GetAll();
 
-        public Album GetById(Guid id);
+        Album GetById(Guid id);
 
-        public Album Update(Album album);
+        Album Update(Album album);
 
-        public Album Add(Album album);
+        Album Add(Album album);
 
-        public void Delete(Guid id);
+        void Delete(Guid id);
     }
 }
