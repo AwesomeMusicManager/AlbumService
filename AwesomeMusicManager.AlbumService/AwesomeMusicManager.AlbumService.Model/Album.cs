@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using MediatR;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace AwesomeMusicManager.AlbumService.Model
 {
-    public class Album
+    public class Album : IRequest<Album>
     {
         [BsonId]
         public string Id { get; set; }

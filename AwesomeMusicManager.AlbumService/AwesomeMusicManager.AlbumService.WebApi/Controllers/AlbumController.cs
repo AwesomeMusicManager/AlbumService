@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using AwesomeMusicManager.AlbumService.Model;
+using AwesomeMusicManager.AlbumService.Model.Commands;
 using AwesomeMusicManager.AlbumService.Model.Interfaces;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AwesomeMusicManager.AlbumService.WebApi.Controllers
@@ -11,10 +14,13 @@ namespace AwesomeMusicManager.AlbumService.WebApi.Controllers
     public class AlbumController : ControllerBase
     {
         private readonly IAlbumService _albumService;
+        private readonly IMediator _mediator;
 
-        public AlbumController(IAlbumService service)
+
+        public AlbumController(IAlbumService service, IMediator mediator)
         {
             _albumService = service;
+            _mediator = mediator;
         }
 
         [HttpGet]
@@ -33,17 +39,21 @@ namespace AwesomeMusicManager.AlbumService.WebApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult Edit(Album album)
+        public async Task<IActionResult> Edit(EditAlbumCommand command)
         {
-            _albumService.Update(album);
-            return Ok(album);
+            var response = await _mediator.Send<EditAlbumCommand>(command);
+            return Ok(response);
         }
 
         [HttpPost]
-        public IActionResult Add(Album album)
+        public async Task<IActionResult> Add(AddAlbumCommand command)
         {
-            var insertedAlbum = _albumService.Add(album);
-            return Ok(insertedAlbum);
+            var response = await _mediator.Send<AddAlbumCommand>(command);
+
+            return Ok(response);
+
+            //var insertedAlbum = _albumService.Add(album);
+            //return Ok(insertedAlbum);
         }
 
         [HttpDelete]

@@ -1,7 +1,11 @@
 using System;
+using System.Reflection;
 using AwesomeMusicManager.AlbumService.Infrastructure;
+using AwesomeMusicManager.AlbumService.Model.Commands;
 using AwesomeMusicManager.AlbumService.Model.Interfaces;
 using AwesomeMusicManager.AlbumService.Service;
+using AwesomeMusicManager.AlbumService.Service.CommandHandlers;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -30,7 +34,18 @@ namespace AwesomeMusicManager.AlbumService.WebApi
             services.AddScoped<IAlbumService, Service.AlbumService>();
             services.AddScoped<IMongoRepository, MongoRepository>();
 
+            var assembly = AppDomain.CurrentDomain.Load("AwesomeMusicManager.AlbumService.Service");
+
+            services.AddMediatR(typeof(CommandHandler).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(AddAlbumCommand).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(EditAlbumCommand).GetTypeInfo().Assembly);
+
+            services.AddMediatR(typeof(AddAlbumCommand));
+            services.AddMediatR(typeof(EditAlbumCommand));
+
             services.AddControllers();
+
+            services.AddCors();
 
             services.AddSwaggerGen(c =>
             {
@@ -59,9 +74,11 @@ namespace AwesomeMusicManager.AlbumService.WebApi
 
             app.UseHttpsRedirection();
 
+            //app.UseAuthorization();
+
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseCors(option => option.AllowAnyOrigin());
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
